@@ -1,6 +1,5 @@
 const React = require("react");
 
-// change the input of your checkbox to be true/false rather than on see server.js fruits app example --> line 80 - 84
 
 class New extends React.Component {
   render() {
