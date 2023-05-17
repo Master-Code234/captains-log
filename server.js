@@ -32,6 +32,10 @@ app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "jsx");
 app.engine("jsx", require("jsx-view-engine").createEngine());
 
+// Data
+
+const Logs = require("./models/log");
+
 // Routes
 
 app.get("/", (req, res) => {
@@ -39,7 +43,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/logs", (req, res) => {
-  res.render(`../views/Index`);
+  Logs.find({}, (error, allLogs) => {
+    res.render("../views/Index", {
+      log: allLogs,
+    });
+  });
 });
 
 app.get("/logs/new", (req, res) => {
@@ -47,9 +55,25 @@ app.get("/logs/new", (req, res) => {
 });
 
 app.post("/logs", (req, res) => {
-  res.send(req.body);
+  if (req.body.checked === "on") {
+    req.body.checked = true;
+  } else {
+    req.body.checked = false;
+  }
+  Logs.create(req.body, (error, createdLog) => {
+    res.redirect("/logs");
+  });
+});
+
+app.get("/logs/:id", (req, res) => {
+  Logs.findById(req.params.id, (err, foundLog) => {
+    res.render(`../views/Show`, {
+      logs: foundLog,
+    });
+  });
 });
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+

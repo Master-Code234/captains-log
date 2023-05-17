@@ -6,6 +6,6 @@ const logsSchema = new mongoose.Schema({
   shipIsBroken: Boolean,
 });
 
-const logs = mongoose.model("logs", logsSchema);
+const Logs = mongoose.model("logs", logsSchema);
 
-module.exports = logs;
+module.exports = Logs;
