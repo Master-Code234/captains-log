@@ -6,10 +6,20 @@ class Index extends React.Component {
       <div>
         <h1>Logs Index Page</h1>
         <ul>
-          {this.props.log.map((logs, i) => {
+          {this.props.log.map((log, i) => {
             return (
               <li>
-               <a href={`/logs/Show"${logs.id}`}>{logs.title}</a>
+                <a href={`/logs/${log._id}`}>{log.title}</a>
+
+                <br />
+
+                <a href={`/logs/${log._id}/edit`}>Edit</a>
+
+                <form action={`/logs/${log._id}?_method=DELETE`} method="POST">
+
+                  <input type="submit" value="DELETE" />
+
+                </form>
               </li>
             );
           })}

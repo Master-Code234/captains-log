@@ -11,11 +11,11 @@ class New extends React.Component {
         <form action="/logs" method="POST">
           title: <input type="text" name="title" />
           <br />
-          entry: <input type="textarea" />
+          entry: <input type="textarea" name="entry" />
           <br />
-          shipIsBroken:  <input type="checkbox"  name="checked"/>
+          Is Ship broken:  <input type="checkbox"  name="shipIsBroken"/>
           <br />
-          <input type="submit" />
+          <input type="submit" value="create log" />
         </form>
       </div>
     );
