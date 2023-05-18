@@ -6,11 +6,14 @@ class Show extends React.Component {
     return (
       <div>
         <h1>Show page</h1>
+        
         {this.props.logs.title}
         <br />
+
         {this.props.logs.entry}
         <br />
-        {this.props.logs.shipIsBroken ? "true" : "false"}
+
+        {this.props.logs.shipIsBroken ? "The Ship is broken!" : "The Ship is Fine"}
         <br />
         <a href={`/logs`}>Back</a>
       </div>
